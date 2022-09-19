@@ -1,5 +1,5 @@
 import express from "express";
-import seniorRoutes from "./domains/senior/login/routes";
+import seniorRoutes from "./domains/senior/routes";
 const router = express.Router();
 
 router.use("/senior", seniorRoutes);
