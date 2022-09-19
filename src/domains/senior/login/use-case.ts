@@ -1,5 +1,5 @@
-import { SeniorService } from "../../../../services/senior/senior";
-import { ErrorResponse } from "../../../../utils/error-response";
+import { SeniorService } from "../../../services/senior/senior";
+import { Result } from "../../../utils/result";
 
 interface LoginUseCaseRequest {
   user: string;
@@ -16,12 +16,12 @@ export class LoginUseCase {
   async execute({
     user,
     password,
-  }: LoginUseCaseRequest): Promise<LoginUseCaseResponse> {
+  }: LoginUseCaseRequest): Promise<Result<LoginUseCaseResponse>> {
     try {
       const token = await this.service.login({ user, password });
-      return { token };
+      return Result.ok({ token });
     } catch (error) {
-      throw new ErrorResponse(error.message, 403);
+      return Result.fail({ message: error.message }, 401);
     }
   }
 }
