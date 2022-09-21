@@ -1,5 +1,5 @@
+import { UnauthorizedError } from "../../../helpers/api-errors";
 import { SeniorService } from "../../../services/senior/senior";
-import { Result } from "../../../utils/result";
 
 interface LoginUseCaseRequest {
   user: string;
@@ -16,12 +16,12 @@ export class LoginUseCase {
   async execute({
     user,
     password,
-  }: LoginUseCaseRequest): Promise<Result<LoginUseCaseResponse>> {
+  }: LoginUseCaseRequest): Promise<LoginUseCaseResponse> {
     try {
       const token = await this.service.login({ user, password });
-      return Result.ok({ token });
+      return { token };
     } catch (error) {
-      return Result.fail({ message: error.message }, 401);
+      throw new UnauthorizedError();
     }
   }
 }
