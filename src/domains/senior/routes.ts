@@ -1,13 +1,13 @@
-import express from "express";
-import { validateFields } from "../../utils/fields-validation-middleware";
+import { Router } from "express";
+import { validateFieldsMiddleware } from "../../middleware/fields-validation";
 import { SeniorController } from "./login/controller";
 import { loginSchema } from "./login/schema";
-const router = express.Router();
+const routes = Router();
 
-router.post(
+routes.post(
   "/login",
-  [validateFields(loginSchema, "body")],
+  [validateFieldsMiddleware(loginSchema, "body")],
   SeniorController.login
 );
 
-export default router;
+export default routes;

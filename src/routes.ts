@@ -1,7 +1,7 @@
-import express from "express";
+import { Router } from "express";
 import seniorRoutes from "./domains/senior/routes";
-const router = express.Router();
+const routes = Router();
 
-router.use("/senior", seniorRoutes);
+routes.use("/senior", seniorRoutes);
 
-export default router;
+export default routes;
