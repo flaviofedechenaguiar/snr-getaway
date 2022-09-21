@@ -13,9 +13,6 @@ export class SeniorController {
       password: req.body.password,
     });
 
-    if (result.isFailure) {
-      return res.status(result.code).json(result.error);
-    }
-    return res.json(result.getValue());
+    return res.json(result);
   }
 }
