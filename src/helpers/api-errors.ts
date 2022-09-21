@@ -17,3 +17,12 @@ export class UnauthorizedError extends ApiError {
     super(message, statusCode);
   }
 }
+
+export class UnprocessableEntity extends ApiError {
+  constructor(errors = []) {
+    const message = "Invalid fields";
+    const statusCode = 422;
+
+    super(message, statusCode, errors);
+  }
+}
