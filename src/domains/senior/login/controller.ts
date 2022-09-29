@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import { api } from "../../../configs/api";
-import { SeniorService } from "./../../../services/senior/senior";
+import { api } from "@/configs/api";
+import { SeniorService } from "@/services/senior/senior";
 import { LoginUseCase } from "./use-case";
 
 export class SeniorController {
