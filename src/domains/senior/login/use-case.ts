@@ -1,5 +1,5 @@
-import { UnauthorizedError } from "../../../helpers/api-errors";
-import { SeniorService } from "../../../services/senior/senior";
+import { UnauthorizedError } from "@/helpers/api-errors";
+import { SeniorService } from "@/services/senior/senior";
 
 interface LoginUseCaseRequest {
   user: string;
