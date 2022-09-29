@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { ObjectSchema, ValidationOptions } from "joi";
-import { UnprocessableEntity } from "../helpers/api-errors";
+import { UnprocessableEntity } from "@/helpers/api-errors";
 
 type Property = "body" | "query";
 
