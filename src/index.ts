@@ -1,3 +1,4 @@
+import "module-alias/register";
 import { ENV } from "./configs/env";
 import server from "./server";
 
