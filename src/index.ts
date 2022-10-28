@@ -1,7 +1,8 @@
-import "module-alias/register";
 import { ENV } from "./configs/env";
 import server from "./server";
 
-server.listen(process.env.PORT, () => {
-  console.log(`Server running http://localhost:${ENV.port}/`);
+const port = ENV.port;
+
+server.listen(port, () => {
+  console.log(`Server running port:${port}`);
 });
