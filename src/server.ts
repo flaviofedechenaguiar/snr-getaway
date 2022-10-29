@@ -1,6 +1,6 @@
-import cors from "cors";
 import express from "express";
 import "express-async-errors";
+import cors from "cors";
 import { corsConfig } from "./configs/cors";
 import { errorHandlingMiddleware } from "./middleware/error-handling";
 import router from "./routes";
