@@ -1,14 +1,27 @@
-FROM node:16.17.0-alpine
+FROM debian:bullseye as builder
 
+ARG NODE_VERSION=16.17.0
+ARG YARN_VERSION=1.22.19
+
+RUN apt-get update; apt install -y curl
+RUN curl https://get.volta.sh | bash
+ENV VOLTA_HOME /root/.volta
+ENV PATH /root/.volta/bin:$PATH
+RUN volta install node@${NODE_VERSION} yarn@${YARN_VERSION}
+
+RUN mkdir /app
 WORKDIR /app
-
-COPY package.json .
-COPY yarn.lock .
-
-RUN yarn
 
 COPY . .
 
-EXPOSE 3000
+RUN yarn install
 
-CMD [ "yarn", "dev" ]
+FROM debian:bullseye
+
+COPY --from=builder /root/.volta /root/.volta
+COPY --from=builder /app /app
+
+WORKDIR /app
+ENV PATH /root/.volta/bin:$PATH
+
+CMD [ "yarn", "start" ]
