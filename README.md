@@ -22,10 +22,6 @@ Snr-Getaway e uma api gateway que possibilita o login na plataforma snr. Utiliza
       "token":"eyJhbGciOiJIUzI1NiIsI4fwpMeJf"
     }
 
-## Run Project
-
-`docker-compose build && docker-compose up`
-
 
 
 
